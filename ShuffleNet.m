@@ -32,7 +32,7 @@ numIterationsPerEpoch = floor(numObservationsTrain/miniBatchSize); % Validation 
 options = trainingOptions('adam', 'MiniBatchSize', miniBatchSize, 'MaxEpochs', 20, 'InitialLearnRate', 1e-4, 'Shuffle', 'every-epoch', 'ValidationData', augTestImages, 'ValidationFrequency', numIterationsPerEpoch, 'Verbose', false, 'Plots', 'training-progress', 'OutputNetwork', 'best-validation');
 
 % training the ShuffleNet
-netTransfer = trainNetwork(augTrainImages, layers, options);
+netTransfer = trainNetwork(augTrainImages, lgraph, options);
 
 % Classifying images
 YPred = classify(netTransfer, augTestImages);
